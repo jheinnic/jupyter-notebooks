@@ -1,4 +1,4 @@
-FROM quay.io/jupyteronopenshift/s2i-minimal-notebook-py36:2.5.1
+FROM s2i-minimal-notebook-py36:2.5.1-jch
 
 USER root
 
