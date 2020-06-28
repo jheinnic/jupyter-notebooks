@@ -53,8 +53,8 @@
                 "source": {
                     "type": "Git",
                     "git": {
-                        "uri": "https://github.com/jupyter-on-openshift/jupyter-notebooks",
-                        "ref": "2.5.1"
+                        "uri": "https://github.com/jheinnic/jupyter-notebooks",
+                        "ref": "92abb0384fa90e02f5ffacb41401a1a37e67090d"
                     },
                     "contextDir": "minimal-notebook"
                 },
@@ -71,7 +71,7 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-minimal-notebook-py35:2.5.1"
+                        "name": "s2i-minimal-notebook-py35:2.5.1-jch"
                     }
                 },
                 "resources": {
@@ -102,8 +102,8 @@
                 "source": {
                     "type": "Git",
                     "git": {
-                        "uri": "https://github.com/jupyter-on-openshift/jupyter-notebooks",
-                        "ref": "2.5.1"
+                        "uri": "https://github.com/jheinnic/jupyter-notebooks",
+                        "ref": "92abb0384fa90e02f5ffacb41401a1a37e67090d"
                     },
                     "contextDir": "minimal-notebook"
                 },
@@ -120,7 +120,7 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-minimal-notebook-py36:2.5.1"
+                        "name": "s2i-minimal-notebook-py36:2.5.1-jch"
                     }
                 },
                 "resources": {

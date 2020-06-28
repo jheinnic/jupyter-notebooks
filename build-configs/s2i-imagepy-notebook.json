@@ -6,9 +6,9 @@
             "kind": "ImageStream",
             "apiVersion": "image.openshift.io/v1",
             "metadata": {
-                "name": "s2i-tensorflow-notebook-py36",
+                "name": "s2i-imagepy-notebook-py36",
                 "labels": {
-                    "build": "s2i-tensorflow-notebook-py36"
+                    "build": "s2i-imagepy-notebook-py36"
                 }
             },
             "spec": {
@@ -21,9 +21,9 @@
             "kind": "BuildConfig",
             "apiVersion": "build.openshift.io/v1",
             "metadata": {
-                "name": "s2i-tensorflow-notebook-py36",
+                "name": "s2i-imagepy-notebook-py36",
                 "labels": {
-                    "build": "s2i-tensorflow-notebook-py36"
+                    "build": "s2i-imagepy-notebook-py36"
                 }
             },
             "spec": {
@@ -41,7 +41,7 @@
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
                         "ref": "92abb0384fa90e02f5ffacb41401a1a37e67090d"
                     },
-                    "contextDir": "tensorflow-notebook"
+                    "contextDir": "imagepy-notebook"
                 },
                 "strategy": {
                     "type": "Source",
@@ -55,7 +55,7 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-tensorflow-notebook-py36:2.5.1-jch"
+                        "name": "s2i-imagepy-notebook-py36:2.5.1-jch"
                     }
                 },
                 "resources": {
