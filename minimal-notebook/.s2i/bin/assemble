@@ -122,3 +122,5 @@ rm -rf /tmp/src
 # Fixup permissions on directories and files.
 
 fix-permissions /opt/app-root
+
+ipcluster nbextension enable

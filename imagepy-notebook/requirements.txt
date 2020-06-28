@@ -1,4 +1,4 @@
-### scipy-notebook
+### imagepy-notebook
 
 beautifulsoup4==4.8.*
 imutils==0.5.*
