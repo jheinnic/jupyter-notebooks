@@ -1,4 +1,4 @@
-FROM s2i-minimal-notebook-py36:2.5.1-jch
+FROM image-registry.apps.r01oc4.lumins.jchein.name/jupyter-hub/s2i-minimal-notebook-py36@2.5.1-jch
 
 USER root
 
