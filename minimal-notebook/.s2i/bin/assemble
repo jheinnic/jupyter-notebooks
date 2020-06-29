@@ -35,6 +35,11 @@ cp /tmp/src/jupyter_notebook_config.py /opt/app-root/etc/
 cp /tmp/src/jupyter_kernel_gateway_config.py /opt/app-root/etc/
 cp /tmp/src/httpd-webdav.conf /opt/app-root/etc/
 
+# Enable ipyparallel for JubyterHub
+jupyter nbextension install --sys-prefix --py ipyparallel
+jupyter nbextension enable --sys-prefix --py ipyparallel
+jupyter serverextension enable --sys-prefix --py ipyparallel
+
 # This S2I assemble script is only used when creating the custom image.
 # For when running the image, or using it as a S2I builder, we use a second
 # set of custom S2I scripts. We now need to move these into the correct
@@ -122,5 +127,3 @@ rm -rf /tmp/src
 # Fixup permissions on directories and files.
 
 fix-permissions /opt/app-root
-
-ipcluster nbextension enable
