@@ -54,14 +54,14 @@ The name of the latest build version of this image is:
 Although this image could be imported into an OpenShift cluster using ``oc import-image``, it is recommended instead that you load it using the supplied image stream definition, using:
 
 ```
-oc create -f https://raw.githubusercontent.com/jupyter-on-openshift/jupyter-notebooks/master/image-streams/s2i-minimal-notebook.json
+oc create -f https://raw.githubusercontent.com/jupyter-on-openshift/jupyter-notebooks/master/image-streams/s2i-minimal-notebook-py36.json
 ```
 
 This is preferred, as it will create an image stream with tag corresponding to the Python version being used, with the underlying image reference referring to a specific version of the image on quay.io, rather than the latest build. This ensures that the version of the image doesn't change to a newer version of the image which you haven't tested.
 
 Once the image stream definition is loaded, the project it is loaded into should have the tagged image:
 
-* s2i-minimal-notebook:3.6
+* s2i-minimal-notebook-py36:2.5.1
 
 Building the Minimal Notebook
 -----------------------------
@@ -80,7 +80,7 @@ This will create a build configuration in your OpenShift project to build the mi
 oc logs --follow bc/s2i-minimal-notebook-py36
 ```
 
-A tagged image ``s2i-minimal-notebook:3.6`` should be created in your project. Since it uses the same image name as when loading the image using the image stream, referencing the image on quay.io, only do one or the other. Don't try to both load the image stream, and build the minimal notebook from source code.
+A tagged image ``s2i-minimal-notebook-py36:2.5.1`` should be created in your project. Since it uses the same image name as when loading the image using the image stream, referencing the image on quay.io, only do one or the other. Don't try to both load the image stream, and build the minimal notebook from source code.
 
 Deploying the Minimal Notebook
 ------------------------------
@@ -88,7 +88,7 @@ Deploying the Minimal Notebook
 To deploy the minimal notebook image run the following commands:
 
 ```
-oc new-app s2i-minimal-notebook:3.6 --name minimal-notebook \
+oc new-app s2i-minimal-notebook-py36:2.5.1 --name minimal-notebook \
     --env JUPYTER_NOTEBOOK_PASSWORD=mypassword
 ```
 
