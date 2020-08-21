@@ -54,7 +54,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "4173d3293910cf3d8b1d35cc7883bbb8bb18681f"
+                        "ref": "7e9539ee038b0eda72da1683b51cb0a04225881d"
                     },
                     "contextDir": "minimal-notebook"
                 },
@@ -103,7 +103,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "4173d3293910cf3d8b1d35cc7883bbb8bb18681f"
+                        "ref": "7e9539ee038b0eda72da1683b51cb0a04225881d"
                     },
                     "contextDir": "minimal-notebook"
                 },
