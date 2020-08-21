@@ -39,7 +39,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "7e9539ee038b0eda72da1683b51cb0a04225881d"
+                        "ref": "052a6358b315881fbb23cd1931bbef92ced6cd1a"
                     },
                     "contextDir": "tensorflow-notebook"
                 },
@@ -60,10 +60,10 @@
                 },
                 "resources": {
                     "limits": {
-                        "memory": "1Gi"
+                        "memory": "2Gi"
                     }
                 }
             }
         }
     ]
-}
+}11111111111111111111111
