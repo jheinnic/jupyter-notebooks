@@ -71,12 +71,12 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-minimal-notebook-py35:2.5.1-jch"
+                        "name": "s2i-minimal-notebook-py35:2.5.1-rc1"
                     }
                 },
                 "resources": {
                     "limits": {
-                        "memory": "1Gi"
+                        "memory": "2Gi"
                     }
                 }
             }
@@ -120,12 +120,12 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-minimal-notebook-py36:2.5.1-jch"
+                        "name": "s2i-minimal-notebook-py36:2.5.1-rc1"
                     }
                 },
                 "resources": {
                     "limits": {
-                        "memory": "1Gi"
+                        "memory": "2Gi"
                     }
                 }
             }
