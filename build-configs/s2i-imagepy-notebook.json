@@ -39,7 +39,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "92abb0384fa90e02f5ffacb41401a1a37e67090d"
+                        "ref": "4173d3293910cf3d8b1d35cc7883bbb8bb18681f"
                     },
                     "contextDir": "imagepy-notebook"
                 },
@@ -48,14 +48,14 @@
                     "sourceStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "s2i-minimal-notebook-py36:2.5.1-jch"
+                            "name": "s2i-minimal-notebook-py36:2.5.1-rc1"
                         }
                     }
                 },
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "s2i-imagepy-notebook-py36:2.5.1-jch"
+                        "name": "s2i-imagepy-notebook-py36:2.5.1-rc1"
                     }
                 },
                 "resources": {
