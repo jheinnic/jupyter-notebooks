@@ -6,21 +6,6 @@
             "kind": "ImageStream",
             "apiVersion": "image.openshift.io/v1",
             "metadata": {
-                "name": "s2i-minimal-notebook-py35",
-                "labels": {
-                    "build": "s2i-minimal-notebook-py35"
-                }
-            },
-            "spec": {
-                "lookupPolicy": {
-                    "local": true
-                }
-            }
-        },
-        {
-            "kind": "ImageStream",
-            "apiVersion": "image.openshift.io/v1",
-            "metadata": {
                 "name": "s2i-minimal-notebook-py36",
                 "labels": {
                     "build": "s2i-minimal-notebook-py36"
@@ -29,55 +14,6 @@
             "spec": {
                 "lookupPolicy": {
                     "local": true
-                }
-            }
-        },
-        {
-            "kind": "BuildConfig",
-            "apiVersion": "build.openshift.io/v1",
-            "metadata": {
-                "name": "s2i-minimal-notebook-py35",
-                "labels": {
-                    "build": "s2i-minimal-notebook-py35"
-                }
-            },
-            "spec": {
-                "triggers": [
-                    {
-                        "type": "ConfigChange"
-                    },
-                    {
-                        "type": "ImageChange"
-                    }
-                ],
-                "source": {
-                    "type": "Git",
-                    "git": {
-                        "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "052a6358b315881fbb23cd1931bbef92ced6cd1a"
-                    },
-                    "contextDir": "minimal-notebook"
-                },
-                "strategy": {
-                    "type": "Source",
-                    "sourceStrategy": {
-                        "from": {
-                            "kind": "ImageStreamTag",
-                            "name": "python:3.5",
-                            "namespace": "openshift"
-                        }
-                    }
-                },
-                "output": {
-                    "to": {
-                        "kind": "ImageStreamTag",
-                        "name": "s2i-minimal-notebook-py35:2.5.1-rc1"
-                    }
-                },
-                "resources": {
-                    "limits": {
-                        "memory": "2Gi"
-                    }
                 }
             }
         },
