@@ -39,7 +39,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "9e4a7c76b1f97a31521c2ad376d647dc96a454e6"
+                        "ref": "1139cd12c33bfda8c0dbb4db7ba03accbfc0c272"
                     },
                     "contextDir": "minimal-notebook"
                 },
