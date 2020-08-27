@@ -1,4 +1,4 @@
-FROM centos/python-35-centos7:latest
+FROM image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:d8881affb7666e9f1e5b718b27db89c41ab3b8ebeb12510772bf221ee74895db
 
 LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.k8s.display-name="Jupyter Notebook" \

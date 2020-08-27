@@ -1,24 +1,39 @@
 FROM centos/python-36-centos7:latest
 
-USER root
-
-COPY . /tmp/src
-
-RUN rm -rf /tmp/src/.git* && \
-    chown -R 1001 /tmp/src && \
-    chgrp -R 0 /tmp/src && \
-    chmod -R g+w /tmp/src && \
-    rm -rf /tmp/scripts && \
-    mv /tmp/src/.s2i/bin /tmp/scripts
-
-USER 1001
-
 LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.k8s.display-name="Jupyter Notebook" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
 
-RUN /tmp/scripts/assemble
+# Copy into place default config files for Jupyter and Apache webdav.
+COPY . /opt/app-root/tmp
 
-CMD [ "/opt/app-root/builder/run" ]
+# This S2I assemble script is only used when creating the custom image.
+# For when running the image, or using it as a S2I builder, we use a second
+# set of custom S2I scripts. We now need to move these into the correct
+# location and have the custom image use those by dropping in an image
+# metadata file which overrides the labels of the base image.
+
+RUN chown -R 1001 /opt/app-root/tmp && \
+    chgrp -R 0 /opt/app-root/tmp && \
+    chmod -R g+w /opt/app-root/tmp && \
+    chmod g+rx /opt/app-root/tmp/*sh && \
+    mv /opt/app-root/tmp/*.sh /opt/app-root/bin/ && \
+    chmod g+rx /opt/app-root/tmp/*py && \
+    mv /opt/app-root/tmp/*.py /opt/app-root/etc/ && \
+    mv /opt/app-root/tmp/httpd-webdav.conf /opt/app-root/etc/ && \
+    mv /opt/app-root/tmp/builder /opt/app-root/builder && \
+    mv /opt/app-root/tmp/supervisor /opt/app-root/etc/supervisor && \
+    mv /opt/app-root/tmp/gateway /opt/app-root/gateway && \
+    /opt/app-root/bin/assemble.sh && \
+    rm /opt/app-root/bin/assemble.sh && \
+    rm /opt/app-root/tmp/Dockerfile* && \
+    unlink /opt/app-root/tmp/.Dockerfile && \
+    rmdir /opt/app-root/tmp
+
+USER 1001
+
+# CMD [ "/opt/app-root/builder/run" ]
+
+
