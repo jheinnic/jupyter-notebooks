@@ -39,7 +39,7 @@
                     "type": "Git",
                     "git": {
                         "uri": "https://github.com/jheinnic/jupyter-notebooks",
-                        "ref": "1139cd12c33bfda8c0dbb4db7ba03accbfc0c272"
+                        "ref": "d7aae6f93f8b62cd18f938382f31d4713dec7b07"
                     },
                     "contextDir": "tensorflow-notebook"
                 },
