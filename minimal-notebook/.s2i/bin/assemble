@@ -107,14 +107,8 @@ echo "source /opt/app-root/etc/generate_container_user" >> /opt/app-root/etc/scl
 
 # Install packages required by the proxy process.
 
-( \
-	cd /opt/app-root/gateway && \
-	if [ x"${PLATFORM}" = 'xel7' ]
-	then
-		source scl_source enable rh-nodejs10
-	fi && \
-	npm install --production \
-)
+cd /opt/app-root/gateway && source scl_source enable rh-nodejs10
+npm install --production
 
 # Create additional directories.
 
