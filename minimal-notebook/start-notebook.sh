@@ -39,7 +39,7 @@ if [[ "$JUPYTER_PROGRAM_ARGS $@" != *"--ip="* ]]; then
     JUPYTER_PROGRAM_ARGS="--ip=0.0.0.0 $JUPYTER_PROGRAM_ARGS"
 fi
 
-JUPYTER_PROGRAM_ARGS="$JUPYTER_PROGRAM_ARGS --config=/opt/app-root/etc/jupyter_notebook_config.py"
+JUPYTER_PROGRAM_ARGS="$JUPYTER_PROGRAM_ARGS --no-browser --config=/opt/app-root/etc/jupyter_notebook_config.py"
 
 if [[ ! -z "${JUPYTERHUB_API_TOKEN}" ]]; then
     if [[ "$JUPYTER_ENABLE_LAB" =~ ^(true|yes|y|1)$ ]]; then
