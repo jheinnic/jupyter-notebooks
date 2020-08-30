@@ -26,6 +26,7 @@ RUN chown -R 1001 /opt/app-root/tmp && \
     mv /opt/app-root/tmp/builder /opt/app-root/builder && \
     mv /opt/app-root/tmp/supervisor /opt/app-root/etc/supervisor && \
     mv /opt/app-root/tmp/gateway /opt/app-root/gateway && \
+    mv /opt/app-root/tmp/requirements.txt /opt/app-root/src && \
     /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/tmp/Dockerfile* && \
