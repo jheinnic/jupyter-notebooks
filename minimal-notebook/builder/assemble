@@ -15,9 +15,13 @@ if [ -s /tmp/build/requirements.txt ]; then
     cp /tmp/build/requirements.txt /tmp/src/requirements.txt
 fi
 
-# Run the original Python S2I assemble script to install packages.
-
-/usr/libexec/s2i/assemble
+if [[ -f meta.yml ]]; then
+    echo "---> Creating environment with Conda..."
+    conda env create --name venv --file meta.yml
+else
+    # Run the original Python S2I assemble script to install packages.
+    /usr/libexec/s2i/assemble
+fi
 
 # Move files from application source directory to master files directory
 # if directory has been specified. This is to facilitate later copying

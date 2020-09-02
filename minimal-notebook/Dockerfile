@@ -7,6 +7,8 @@ LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.openshift.tags="builder,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
 
+ARG CONDA_VERSION=2020.07
+
 # Copy into place default config files for Jupyter and Apache webdav.
 COPY . /opt/app-root/tmp
 
@@ -28,6 +30,19 @@ RUN chown -R 1001 /opt/app-root/tmp && \
     mv /opt/app-root/tmp/supervisor /opt/app-root/etc/supervisor && \
     mv /opt/app-root/tmp/gateway /opt/app-root/gateway && \
     mv /opt/app-root/tmp/requirements.txt /opt/app-root/src && \
+    if [ "z${CONDA_VERSION}" != 'z' ]; then \
+        wget https://repo.anaconda.com/archive/Anaconda3-${CONDA_VERSION}-Linux-x86_64.sh -O /tmp/Anaconda3.sh && \
+        chmod 755 /tmp/Anaconda3.sh && \
+        /tmp/Anaconda3.sh -b -p /opt/app-root/anaconda3 && \
+        eval "$(/opt/app-root/anaconda3/bin/conda shell.bash hook)" && \
+        conda init && \
+        ln -s /opt/app-root/anaconda3/etc/profile.d/conda.sh ~/.bash_profile && \
+        echo ". /opt/app-root/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
+        echo "conda activate base" >> ~/.bashrc && \
+        chgrp -R root /opt/app-root/anaconda3 && \
+        chmod -R g+rw /opt/app-root/anaconda3 && \
+        rm /tmp/Anaconda3.sh; \
+    fi && \
     /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/tmp/Dockerfile* && \
