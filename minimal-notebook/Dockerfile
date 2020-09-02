@@ -1,4 +1,5 @@
-FROM image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:d8881affb7666e9f1e5b718b27db89c41ab3b8ebeb12510772bf221ee74895db
+# FROM rhscl/python-38-rhel7:1-17.1596049342
+FROM rhscl/python-36-rhel7:1-76.1596049344
 
 LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.k8s.display-name="Jupyter Notebook" \
@@ -35,6 +36,7 @@ RUN chown -R 1001 /opt/app-root/tmp && \
 
 USER 1001
 
-# CMD [ "/opt/app-root/builder/run" ]
-
-
+# This allows the S2i builder itself to be run, producing the same behavior 
+# as the output image that would be produced by building an empty repository
+# with this S2i builder.
+CMD [ "/opt/app-root/builder/run" ]

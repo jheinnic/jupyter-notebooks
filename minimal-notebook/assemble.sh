@@ -107,11 +107,11 @@ cat >> /opt/app-root/etc/supervisord.conf << EOF
 files = /opt/app-root/etc/supervisor/*.conf
 EOF
 
-# Fixup permissions on directories and files.
-# fix-permissions /opt/app-root
-
 chown 1001 /opt/app-root/bin/oc* /opt/app-root/bin/kustomize /opt/app-root/data /opt/app-root/etc/supervisord.conf
 chgrp 0 /opt/app-root/bin/oc* /opt/app-root/bin/kustomize /opt/app-root/data /opt/app-root/etc/supervisord.conf
 chmod g+rx /opt/app-root/bin/oc* /opt/app-root/bin/kustomize 
 chmod g+rw /opt/app-root/etc/supervisord.conf
 chmod g+rwxs /opt/app-root/data
+
+# Fixup permissions on directories and files.
+fix-permissions /opt/app-root
