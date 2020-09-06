@@ -113,5 +113,9 @@ chmod g+rx /opt/app-root/bin/oc* /opt/app-root/bin/kustomize
 chmod g+rw /opt/app-root/etc/supervisord.conf
 chmod g+rwxs /opt/app-root/data
 
+jupyter serverextension enable jupyterlab
+jupyter nbextension enable --py widgetsnbextension --sys-prefix
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 # Fixup permissions on directories and files.
 fix-permissions /opt/app-root
