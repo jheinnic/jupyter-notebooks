@@ -28,9 +28,21 @@ pip install -r /opt/app-root/src/requirements.txt
 
 
 # Enable ipyparallel for JubyterHub
-jupyter nbextension install --sys-prefix --py ipyparallel
-jupyter nbextension enable --sys-prefix --py ipyparallel
-jupyter serverextension enable --sys-prefix --py ipyparallel
+# jupyter nbextension install --sys-prefix --py ipyparallel
+# jupyter nbextension enable --sys-prefix --py ipyparallel
+# jupyter serverextension enable --sys-prefix --py ipyparallel
+
+# Enable JupyterLab 
+jupyter serverextension enable jupyterlab
+jupyter nbextension enable --py widgetsnbextension --sys-prefix
+jupyter nbextension enable --py plotlywidget --sys-prefix
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension install jupyterlab-plotly@4.10.0 --no-build
+jupyter labextension install plotlywidget@4.10.0 --no-build
+jupyter labextension enable @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension enable jupyterlab-plotly@4.10.0 --no-build
+jupyter labextension enable plotlywidget@4.10.0 --no-build
+jupyter lab build --minimize=False
 
 # Install oc command line client for OpenShift cluster.
 
@@ -112,10 +124,6 @@ chgrp 0 /opt/app-root/bin/oc* /opt/app-root/bin/kustomize /opt/app-root/data /op
 chmod g+rx /opt/app-root/bin/oc* /opt/app-root/bin/kustomize 
 chmod g+rw /opt/app-root/etc/supervisord.conf
 chmod g+rwxs /opt/app-root/data
-
-jupyter serverextension enable jupyterlab
-jupyter nbextension enable --py widgetsnbextension --sys-prefix
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 # Fixup permissions on directories and files.
 fix-permissions /opt/app-root

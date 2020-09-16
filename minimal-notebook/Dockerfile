@@ -1,5 +1,5 @@
-# FROM rhscl/python-38-rhel7:1-17.1596049342
-FROM rhscl/python-36-rhel7:1-76.1596049344
+# FROM rhscl/python-36-rhel7:1-76.1600088476
+FROM rhscl/python-38-rhel7:1-17.1600088468
 
 LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.k8s.display-name="Jupyter Notebook" \

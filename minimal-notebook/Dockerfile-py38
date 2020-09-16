@@ -1,4 +1,4 @@
-FROM centos/python-35-centos7:latest
+FROM rhscl/python-38-rhel7:1-17.1600088468
 
 LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.k8s.display-name="Jupyter Notebook" \
@@ -26,7 +26,7 @@ RUN chown -R 1001 /opt/app-root/tmp && \
     mv /opt/app-root/tmp/builder /opt/app-root/builder && \
     mv /opt/app-root/tmp/supervisor /opt/app-root/etc/supervisor && \
     mv /opt/app-root/tmp/gateway /opt/app-root/gateway && \
-    mv /opt/app-root/tmp/requirements.txt /opt/app-root/src && 
+    mv /opt/app-root/tmp/requirements.txt /opt/app-root/src && \
     /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/tmp/Dockerfile* && \
