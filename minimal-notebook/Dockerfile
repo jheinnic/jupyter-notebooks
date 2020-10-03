@@ -28,13 +28,14 @@ RUN chown -R 1001 /opt/app-root/tmp && \
     mv /opt/app-root/tmp/supervisor /opt/app-root/etc/supervisor && \
     mv /opt/app-root/tmp/gateway /opt/app-root/gateway && \
     mv /opt/app-root/tmp/requirements.txt /opt/app-root/src && \
-    yum install protoc && \
     /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/bin/assemble.sh && \
     rm /opt/app-root/tmp/Dockerfile* && \
     unlink /opt/app-root/tmp/.Dockerfile && \
     rmdir /opt/app-root/tmp
 
+USER root
+RUN yum install protoc
 USER 1001
 
 # This allows the S2i builder itself to be run, producing the same behavior 
