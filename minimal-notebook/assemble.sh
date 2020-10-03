@@ -26,6 +26,19 @@ pip install 'supervisor==4.1.0'
 
 pip install -r /opt/app-root/src/requirements.txt
 
+# Install cmake
+cd /opt/app-root
+wget https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-Linux-x86_64.tar.gz
+tar xf ./cmake-3.18.3-Linux-x86_64.tar.gz
+cd ./cmake-3.18.3-Linux-x86_64
+tar cf - . ( cd ../; tar xf - )
+
+# Enable clickable images
+git clone https://github.com/jheinnic/jupyter_clickable_image_widget
+cd jupyter_clickable_image_widget
+pip3 install -e .
+jupyter labextension install js
+jupyter labextension enable js
 
 # Enable ipyparallel for JubyterHub
 # jupyter nbextension install --sys-prefix --py ipyparallel
@@ -100,11 +113,12 @@ rm -rf $HOME/.cache/yarn
 rm -rf $HOME/.node-gyp
 npm install --production
 
-# Create additional directories.
-
-echo " -----> Creating additional directories."
-
+# Making mount point or injection point for init container to write into
 mkdir -p /opt/app-root/data
+mkdir -p /opt/app-root/inst
+
+# Protobuf compiler
+yum install protoc
 
 # Generate default supervisord.conf file.
 
