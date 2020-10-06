@@ -31,14 +31,17 @@ cd /opt/app-root
 wget https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-Linux-x86_64.tar.gz
 tar xf ./cmake-3.18.3-Linux-x86_64.tar.gz
 cd ./cmake-3.18.3-Linux-x86_64
-tar cf - . ( cd ../; tar xf - )
+tar cf - . | ( cd ../; tar xf - )
 
 # Enable clickable images
+cd /tmp
 git clone https://github.com/jheinnic/jupyter_clickable_image_widget
 cd jupyter_clickable_image_widget
 pip3 install -e .
 jupyter labextension install js
 jupyter labextension enable js
+cd /opt/app-root
+# rm -rf /tmp/jupyter_clickable_image_widget
 
 # Enable ipyparallel for JubyterHub
 # jupyter nbextension install --sys-prefix --py ipyparallel
