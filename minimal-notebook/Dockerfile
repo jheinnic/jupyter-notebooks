@@ -34,8 +34,10 @@ RUN chown -R 1001 /opt/app-root/tmp && \
     unlink /opt/app-root/tmp/.Dockerfile && \
     rmdir /opt/app-root/tmp
 
-USER root
-RUN yum install protoc
+# This currently fails because subscription-manager has not been run
+# USER root
+# RUN yum install protoc
+
 USER 1001
 
 # This allows the S2i builder itself to be run, producing the same behavior 
