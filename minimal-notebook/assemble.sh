@@ -120,9 +120,6 @@ npm install --production
 mkdir -p /opt/app-root/data
 mkdir -p /opt/app-root/inst
 
-# Protobuf compiler
-yum install protoc
-
 # Generate default supervisord.conf file.
 
 echo_supervisord_conf | \
